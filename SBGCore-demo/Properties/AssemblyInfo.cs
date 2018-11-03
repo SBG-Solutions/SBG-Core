@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SBGCore")]
+[assembly: AssemblyTitle("SBGCore-demo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SBGCore")]
+[assembly: AssemblyProduct("SBGCore-demo")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("deabb96b-35b9-4f5e-80b7-ea978e357642")]
+[assembly: Guid("82d86c40-707b-42b7-b7e0-b102fcd8ecb8")]
 
 // Version information for an assembly consists of the following four values:
 //
