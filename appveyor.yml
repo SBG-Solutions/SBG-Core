@@ -1,0 +1,28 @@
+version: 1.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
+image: Visual Studio 2017
+configuration: Release
+platform:
+- x86
+- x64
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+build:
+  parallel: true
+  verbosity: minimal
+deploy:
+- provider: BinTray
+  username: mitoskalandiel
+  api_key:
+    secure: 3Oxcm6eqQ4IR2sIrHqFFzB3zyi5EQhiGCYFqTbi69y+aaKBs+4TN3u0YPVT5hRld
+  subject: sbg-solutions
+  repo: SBGCore
+  package: SBGCore Binaries
+  publish: true
+  on:
+    branch: master
