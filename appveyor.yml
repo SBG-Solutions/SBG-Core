@@ -30,9 +30,9 @@ build:
   verbosity: normal
 after_build:
   - set
-  - 7z a SBGCore_%Version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
-  - 7z a SBGConfig_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
-  - 7z a SBGTimer_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGCore_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGConfig_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGTimer_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
 artifacts:
   - path: SBGCore_$(version).$(platform).zip
     name: SBGCore_$(version)-bin-$(platform)
