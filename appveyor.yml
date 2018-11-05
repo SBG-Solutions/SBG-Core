@@ -1,26 +1,43 @@
-version: 1.0.{build}
+version: 0.1.{build}-{branch}
+clone_folder: c:\projects\myproject
 pull_requests:
   do_not_increment_build_number: true
+branches:
+  only:
+    - master
+    - /dev-*/
+  except:
+    - gh-pages
+skip_branch_with_pr: true
 image: Visual Studio 2017
-configuration: Release
-platform:
-- x86
-- x64
+cache:
+  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+  - node_modules                    # local npm modules
+  - '%LocalAppData%\NuGet\Cache'    # NuGet < v3
+  - '%LocalAppData%\NuGet\v3-cache' # NuGet v3
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
+platform:
+  - x86
+  - x64
+configuration: Release
 build:
   parallel: true
-  verbosity: minimal
+  verbosity: normal
+artifacts:
+  # pushing all *.dll files in build directory recursively
+  - path: '**\*.dll'
+
 deploy:
 - provider: BinTray
   username: mitoskalandiel
   api_key:
     secure: 3Oxcm6eqQ4IR2sIrHqFFzB3zyi5EQhiGCYFqTbi69y+aaKBs+4TN3u0YPVT5hRld
-  subject: sbg-solutions
+  subject: mitoskalandiel
   repo: SBGCore
   package: SBGCore Binaries
   publish: true
