@@ -47,7 +47,7 @@ deploy:
     secure: 3Oxcm6eqQ4IR2sIrHqFFzB3zyi5EQhiGCYFqTbi69y+aaKBs+4TN3u0YPVT5hRld
   subject: sbg-solutions
   repo: SBGCore
-  package: SBGCore Binaries
+  package: SBGCore_bin
   publish: true
   on:
     branch: master
