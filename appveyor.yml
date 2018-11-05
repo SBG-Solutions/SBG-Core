@@ -1,4 +1,4 @@
-version: 0.1.{branch}.b{build}{platform}
+version: 0.1.b{build}-{branch}
 clone_folder: c:\projects\SBGCore
 pull_requests:
   do_not_increment_build_number: true
