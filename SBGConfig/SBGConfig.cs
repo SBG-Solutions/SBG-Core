@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
 using static SBGCore.LogHelper;
 
 namespace SBGCore
@@ -113,6 +112,8 @@ namespace SBGCore
         /// </summary>
         private CommandFactory cmd = new CommandFactory();
 
+        private FileHandler fh = new FileHandler();
+
         /// <summary>
         /// The constuctor creates and sets up this instance of SBGConfig
         /// </summary>
@@ -131,7 +132,7 @@ namespace SBGCore
             //Here we try to get a handle on the file and indicate the success
             try
             {
-                _readHandle = new FileStream(_filePath, FileMode.Open);
+                fh._readHandle = new FileStream(_filePath, FileMode.Open);
                 Log(Logger.LogTarget.File, "This should normally result in a successful handle on an xml config file near this dll");
                 Log(Logger.LogTarget.File, "In this case it was '" + _filePath + "' and I was able to open it");
                 _success = true;
@@ -147,9 +148,9 @@ namespace SBGCore
             finally
             {
                 //Just to make sure we're freeing up the file
-                if (_readHandle != null)
+                if (fh._readHandle != null)
                 {
-                    _readHandle.Close();
+                    fh._readHandle.Close();
                 }
             }
             cmd.ExecuteCommand("UpdateFile");
@@ -159,11 +160,11 @@ namespace SBGCore
         {
             if (_entries.Count == 0)
             {
-                ReadFile();
+                fh.ReadFile();
             }
             else
             {
-                WriteFile();
+                fh.WriteFile();
             }
         }
 
@@ -200,12 +201,12 @@ namespace SBGCore
 
         public void WriteConfig()
         {
-            WriteFile();
+            fh.WriteFile();
         }
 
         public void ReadConfig()
         {
-            ReadFile();
+            fh.ReadFile();
         }
 
         /// <summary>

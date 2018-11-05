@@ -18,13 +18,14 @@ namespace SBGCore
             File,
             DB,
             EventLog,
-            NUL=-1
+            NUL = -1
         }
     }
 
     public abstract class LogBase
     {
         protected readonly object lockObj = new object();
+
         public abstract void Log(string msg);
     }
 
@@ -69,10 +70,11 @@ namespace SBGCore
                 default:
                     break;
             }
-            if (logger!=null)
+            if (logger != null)
             {
                 logger.Log(msg);
-            } else
+            }
+            else
             {
                 throw new ArgumentNullException("logger", "No Valid Logtarget has been specified, couldn't log the event :\n" + msg);
             }

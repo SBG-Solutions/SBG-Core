@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using static SBGCore.SBGConfig;
+using SBGCore;
 
 namespace SBGCore
 {
@@ -14,14 +15,14 @@ namespace SBGCore
         /// <summary>
         /// A simple handle for writing conf files
         /// </summary>
-        private StreamWriter _writeHandle;
+        public StreamWriter _writeHandle;
 
         /// <summary>
         /// A simple handle for reading a conf file as a Stream
         /// </summary>
-        private FileStream _readHandle;
+        public FileStream _readHandle;
 
-        private void WriteFile()
+        public void WriteFile()
         {
             XmlSerializer myCerealizer = new XmlSerializer(typeof(List<ConfigEntry>));
             try
@@ -31,7 +32,7 @@ namespace SBGCore
             }
             catch (Exception)
             {
-                Log(Logger.LogTarget.File, "Some error occured, check the logs...");
+                LogHelper.Log(Logger.LogTarget.File, "Some error occured, check the logs...");
             }
             finally
             {
@@ -39,7 +40,7 @@ namespace SBGCore
             }
         }
 
-        private bool ReadFile()
+        public bool ReadFile()
         {
             XmlSerializer myCerealizer = new XmlSerializer(typeof(List<ConfigEntry>));
             _readHandle = new FileStream(_filePath, FileMode.Open);
@@ -50,7 +51,7 @@ namespace SBGCore
             }
             catch (Exception)
             {
-                Log(Logger.LogTarget.File, "Something went wrong when trying to read the file");
+                LogHelper.Log(Logger.LogTarget.File, "Something went wrong when trying to read the file");
                 return false;
             }
             finally
