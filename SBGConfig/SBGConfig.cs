@@ -9,6 +9,9 @@ using static SBGCore.LogHelper;
 
 namespace SBGCore
 {
+    /// <summary>
+    /// SBGCore.SBGConfig class
+    /// </summary>
     public class SBGConfig
     {
         /// <summary>
@@ -105,6 +108,9 @@ namespace SBGCore
         /// <remarks>Currently we are simply storing it right next the calling exe of this dll</remarks>
         public static string _filePath;
 
+        /// <summary>
+        /// A list of config entries
+        /// </summary>
         public static List<ConfigEntry> _entries = new List<ConfigEntry>();
 
         /// <summary>
@@ -125,7 +131,7 @@ namespace SBGCore
             _filePath = SBGCore.C0re.CoreDirectory + "\\" + owner + ".conf";
             //This is to clear the existing log
             Log(Logger.LogTarget.File, "");
-            /// Add an UpdateCommand to the CommandFactory
+            // Add an UpdateCommand to the CommandFactory
             //var cmd = new CommandFactory();
             cmd.RegisterCommand("UpdateFile", UpdateFile);
 
@@ -171,6 +177,7 @@ namespace SBGCore
         /// <summary>
         /// This guy check the type of variable that _value contains and set the via ref passed in type accordingly
         /// </summary>
+        /// <param name="_key">The key of the value to be retrieved</param>
         /// <param name="_value">The value to be checked for its variable type</param>
         /// <param name="_entryType">This sets the entryType via reference from the calling function</param>
         private void SetType(string _key, object _value, ref ConfigTypes _entryType)
@@ -199,11 +206,17 @@ namespace SBGCore
             _entryType = _t;
         }
 
+        /// <summary>
+        /// Write configuration
+        /// </summary>
         public void WriteConfig()
         {
             fh.WriteFile();
         }
 
+        /// <summary>
+        /// Read configuration
+        /// </summary>
         public void ReadConfig()
         {
             fh.ReadFile();

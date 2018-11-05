@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SBGCore
 {
+    /// <summary>
+    /// A timer class
+    /// </summary>
     public class SBGTimer
     {
     }
