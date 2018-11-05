@@ -37,7 +37,7 @@ deploy:
   username: mitoskalandiel
   api_key:
     secure: 3Oxcm6eqQ4IR2sIrHqFFzB3zyi5EQhiGCYFqTbi69y+aaKBs+4TN3u0YPVT5hRld
-  subject: sbg-solutions
+  subject: mitoskalandiel
   repo: SBGCore
   package: SBGCore Binaries
   publish: true
