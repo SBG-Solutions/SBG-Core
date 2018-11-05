@@ -1,11 +1,11 @@
 version: 0.1.{build}-{branch}
-clone_folder: c:\projects\myproject
+clone_folder: c:\projects\SBGCore
 pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
     - master
-    - /dev-*/
+    - dev
   except:
     - gh-pages
 skip_branch_with_pr: true
@@ -28,16 +28,24 @@ configuration: Release
 build:
   parallel: true
   verbosity: normal
+after_build:
+  - set
+  - 7z a SBGCore_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGConfig_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGTimer_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
 artifacts:
-  # pushing all *.dll files in build directory recursively
-  - path: '**\*.dll'
-
+  - path: SBGCore_$(APPVEYOR_BUILD_VERSION).$(platform).zip
+    name: SBGCore_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
+  - path: SBGConfig_$(APPVEYOR_BUILD_VERSION).$(platform).zip
+    name: SBGConfig_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
+  - path: SBGTimer_$(APPVEYOR_BUILD_VERSION).$(platform).zip
+    name: SBGTimer_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
 deploy:
 - provider: BinTray
   username: mitoskalandiel
   api_key:
     secure: 3Oxcm6eqQ4IR2sIrHqFFzB3zyi5EQhiGCYFqTbi69y+aaKBs+4TN3u0YPVT5hRld
-  subject: mitoskalandiel
+  subject: sbg-solutions
   repo: SBGCore
   package: SBGCore Binaries
   publish: true
