@@ -34,12 +34,12 @@ after_build:
   - 7z a SBGConfig_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
   - 7z a SBGTimer_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
 artifacts:
-  - path: SBGCore_$(version).$(platform).zip
-    name: SBGCore_$(version)-bin-$(platform)
-  - path: SBGConfig_$(version).$(platform).zip
-    name: SBGConfig_$(version)-bin-$(platform)
-  - path: SBGTimer_$(version).$(platform).zip
-    name: SBGTimer_$(version)-bin-$(platform)
+  - path: SBGCore_$(APPVEYOR_BUILD_VERSION).$(platform).zip
+    name: SBGCore_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
+  - path: SBGConfig_$(APPVEYOR_BUILD_VERSION).$(platform).zip
+    name: SBGConfig_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
+  - path: SBGTimer_$(APPVEYOR_BUILD_VERSION).$(platform).zip
+    name: SBGTimer_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
 deploy:
 - provider: BinTray
   username: mitoskalandiel
