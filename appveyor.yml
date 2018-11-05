@@ -27,9 +27,10 @@ platform:
 configuration: Release
 build:
   parallel: true
-  verbosity: quiet
+  verbosity: normal
 after_build:
-  - 7z a SBGCore_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
+  - set
+  - 7z a SBGCore_%Version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
   - 7z a SBGConfig_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
   - 7z a SBGTimer_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
 artifacts:
