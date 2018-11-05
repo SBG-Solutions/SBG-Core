@@ -1,5 +1,5 @@
-version: 0.1.{build}-{branch}
-clone_folder: c:\projects\myproject
+version: 0.1.{branch}.b{build}{platform}
+clone_folder: c:\projects\SBGCore
 pull_requests:
   do_not_increment_build_number: true
 branches:
@@ -31,7 +31,7 @@ build:
 after_build:
   - dir /ah
   - set
-  - 7z a SBGCore.{platform}.zip %APPVEYOR_BUILD_FOLDER%\bin\$(platform)\%configuration%\*.dll
+  - 7z a SBGCore.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\bin\%Platform%\%Configuration%\*.dll
 artifacts:
   - path: SBGCore.$(platform).zip
     name: SBGCore-bin-$(platform)
