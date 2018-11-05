@@ -29,7 +29,9 @@ build:
   parallel: true
   verbosity: normal
 after_build:
-  - 7z a SBGCore.$(platform).zip %APPVEYOR_BUILD_FOLDER%\bin\$(platform)\%configuration%\*.dll
+  - dir /ah
+  - set
+  - 7z a SBGCore.{platform}.zip %APPVEYOR_BUILD_FOLDER%\bin\$(platform)\%configuration%\*.dll
 artifacts:
   - path: SBGCore.$(platform).zip
     name: SBGCore-bin-$(platform)
