@@ -5,7 +5,7 @@ pull_requests:
 branches:
   only:
     - master
-    - /dev-*/
+    - dev
   except:
     - gh-pages
 skip_branch_with_pr: true
@@ -27,11 +27,10 @@ platform:
 configuration: Release
 build:
   parallel: true
-  verbosity: normal
+  verbosity: minimal
 after_build:
-  - dir /ah
-  - set
-  - 7z a SBGCore.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\bin\%Platform%\%Configuration%\*.dll
+  - dir
+#  - 7z a SBGCore.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\bin\%Platform%\%Configuration%\*.dll
 artifacts:
   - path: SBGCore.$(platform).zip
     name: SBGCore-bin-$(platform)
