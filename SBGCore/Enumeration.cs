@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace SBGCore
 {
+    /// <summary>
+    /// Enumeration Class so we can do a switch case on enums
+    /// </summary>
     public static class Enumeration
     {
+        /// <summary>
+        /// Go through a list of enums and return them as a Dictionary
+        /// </summary>
+        /// <typeparam name="TEnum">type enum</typeparam>
+        /// <returns>Dictionary of enum values</returns>
         public static IDictionary<int, string> GetAll<TEnum>() where TEnum : struct
         {
             var enumerationType = typeof(TEnum);
@@ -21,6 +29,5 @@ namespace SBGCore
             }
             return dictionary;
         }
-
     }
 }

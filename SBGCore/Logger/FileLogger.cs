@@ -3,9 +3,16 @@ using System.Runtime.CompilerServices;
 
 namespace SBGCore
 {
+    /// <summary>
+    /// A file logger
+    /// </summary>
     public class FileLogger : LogBase
     {
+        /// <summary>
+        /// Where do we store the log?
+        /// </summary>
         public string filePath;
+
         private readonly string _extension = ".log";
 
         /// <summary>
@@ -16,9 +23,12 @@ namespace SBGCore
         /// <param name="callerName"></param>
         public void SanitizeFileName([CallerMemberName] string callerName = "")
         {
-            if (SBGCore.C0re.CoreDirectory==string.Empty || SBGCore.C0re.OwnerName==string.Empty) {
+            if (SBGCore.C0re.CoreDirectory == string.Empty || SBGCore.C0re.OwnerName == string.Empty)
+            {
                 filePath = "SBGCore." + callerName + _extension;
-            } else {
+            }
+            else
+            {
                 filePath = SBGCore.C0re.CoreDirectory + @"\" + SBGCore.C0re.OwnerName + "." + callerName + _extension;
             }
         }
@@ -30,9 +40,9 @@ namespace SBGCore
         public override void Log(string msg)
         {
             SanitizeFileName();
-            if (msg!="")
+            if (msg != "")
             {
-                /// If the message has content write this away to the file (appending it)
+                // If the message has content write this away to the file (appending it)
                 lock (lockObj)
                 {
                     using (StreamWriter fileHandle = new StreamWriter(filePath, true))
@@ -40,10 +50,11 @@ namespace SBGCore
                         fileHandle.WriteLine(msg);
                         fileHandle.Close();
                     }
-                } 
-            } else
+                }
+            }
+            else
             {
-                /// If the message is empty, open and close the file without appending and then flush it.
+                // If the message is empty, open and close the file without appending and then flush it.
                 lock (lockObj)
                 {
                     using (StreamWriter fileHandle = new StreamWriter(filePath, false))
@@ -53,7 +64,6 @@ namespace SBGCore
                     }
                 }
             }
-            
         }
     }
 }

@@ -8,24 +8,52 @@ using static SBGCore.Logger;
 
 namespace SBGCore
 {
+    /// <summary>
+    /// Logger class
+    /// </summary>
     public class Logger
     {
         /// <summary>
-        /// A collection
+        /// A collection of logtargets
         /// </summary>
         public enum LogTarget
         {
+            /// <summary>
+            /// LogTarget: File
+            /// </summary>
             File,
+
+            /// <summary>
+            /// LogTarget Database
+            /// </summary>
             DB,
+
+            /// <summary>
+            /// LogTarget: OS Eventlogger
+            /// </summary>
             EventLog,
+
+            /// <summary>
+            /// LogTarget: no target
+            /// </summary>
             NUL = -1
         }
     }
 
+    /// <summary>
+    /// Abstract logger class from which all loggers inherit
+    /// </summary>
     public abstract class LogBase
     {
+        /// <summary>
+        /// An object we use for exclusive locking
+        /// </summary>
         protected readonly object lockObj = new object();
 
+        /// <summary>
+        /// Log a message
+        /// </summary>
+        /// <param name="msg">The message string to log</param>
         public abstract void Log(string msg);
     }
 
