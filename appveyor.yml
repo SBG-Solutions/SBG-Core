@@ -27,13 +27,18 @@ platform:
 configuration: Release
 build:
   parallel: true
-  verbosity: minimal
+  verbosity: quiet
 after_build:
-  - dir
-  - 7z a SBGCore.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\**\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGCore_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGConfig_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGTimer_%version%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
 artifacts:
-  - path: SBGCore.$(platform).zip
-    name: SBGCore-bin-$(platform)
+  - path: SBGCore_$(version).$(platform).zip
+    name: SBGCore_$(version)-bin-$(platform)
+  - path: SBGConfig_$(version).$(platform).zip
+    name: SBGConfig_$(version)-bin-$(platform)
+  - path: SBGTimer_$(version).$(platform).zip
+    name: SBGTimer_$(version)-bin-$(platform)
 deploy:
 - provider: BinTray
   username: mitoskalandiel
