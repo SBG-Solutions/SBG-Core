@@ -30,7 +30,7 @@ build:
   verbosity: minimal
 after_build:
   - dir
-#  - 7z a SBGCore.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGCore.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\**\bin\%Platform%\%Configuration%\*.dll
 artifacts:
   - path: SBGCore.$(platform).zip
     name: SBGCore-bin-$(platform)
