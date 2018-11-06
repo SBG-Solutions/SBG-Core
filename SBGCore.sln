@@ -85,7 +85,9 @@ Global
 		{EC96493A-6087-4D59-9379-7061FAE9FFDB}.Debug|x86.Build.0 = Debug|Any CPU
 		{EC96493A-6087-4D59-9379-7061FAE9FFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC96493A-6087-4D59-9379-7061FAE9FFDB}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC96493A-6087-4D59-9379-7061FAE9FFDB}.Release|x64.Build.0 = Release|Any CPU
 		{EC96493A-6087-4D59-9379-7061FAE9FFDB}.Release|x86.ActiveCfg = Release|Any CPU
+		{EC96493A-6087-4D59-9379-7061FAE9FFDB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
