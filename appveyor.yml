@@ -30,7 +30,7 @@ platform:
 configuration: Release
 build:
   parallel: true
-  verbosity: normal
+  verbosity: minimal
 before_build:
   - appveyor-retry nuget restore
   - set 
