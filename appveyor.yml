@@ -29,6 +29,7 @@ build:
   parallel: true
   verbosity: normal
 before_build:
+  - appveyor-retry nuget restore
   - set DOCFX_SOURCE_BRANCH_NAME=%APPVEYOR_REPO_BRANCH%
 after_build:
   - set
