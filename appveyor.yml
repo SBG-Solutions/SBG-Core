@@ -32,9 +32,11 @@ before_build:
   - appveyor-retry nuget restore
   - set DOCFX_SOURCE_BRANCH_NAME=%APPVEYOR_REPO_BRANCH%
 after_build:
-  - set
+  - 7z a SBGCore_%APPVEYOR_BUILD_VERSION%.%Platform%.docs.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\_site\
   - 7z a SBGCore_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGCore\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGConfig_%APPVEYOR_BUILD_VERSION%.%Platform%.docs.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\_site\
   - 7z a SBGConfig_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGConfig\bin\%Platform%\%Configuration%\*.dll
+  - 7z a SBGTimer_%APPVEYOR_BUILD_VERSION%.%Platform%.docs.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\_site\
   - 7z a SBGTimer_%APPVEYOR_BUILD_VERSION%.%Platform%.zip %APPVEYOR_BUILD_FOLDER%\SBGTimer\bin\%Platform%\%Configuration%\*.dll
 artifacts:
   - path: SBGCore_$(APPVEYOR_BUILD_VERSION).$(platform).zip
@@ -43,6 +45,12 @@ artifacts:
     name: SBGConfig_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
   - path: SBGTimer_$(APPVEYOR_BUILD_VERSION).$(platform).zip
     name: SBGTimer_$(APPVEYOR_BUILD_VERSION)-bin-$(platform)
+  - path: SBGCore_$(APPVEYOR_BUILD_VERSION).$(platform).docs.zip
+    name: SBGCore_$(APPVEYOR_BUILD_VERSION)-docs-$(platform)
+  - path: SBGConfig_$(APPVEYOR_BUILD_VERSION).$(platform).docs.zip
+    name: SBGConfig_$(APPVEYOR_BUILD_VERSION)-docs-$(platform)
+  - path: SBGTimer_$(APPVEYOR_BUILD_VERSION).$(platform).docs.zip
+    name: SBGTimer_$(APPVEYOR_BUILD_VERSION)-docs-$(platform)
 deploy:
 - provider: BinTray
   username: mitoskalandiel

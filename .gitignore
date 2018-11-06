@@ -260,3 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 /CoreDocumentation/Help
+/SBGConfig/log.txt
+/SBGCore/log.txt
+/SBGTimer/log.txt
