@@ -175,7 +175,7 @@ namespace SBGCore
         }
 
         /// <summary>
-        /// This guy check the type of variable that _value contains and set the via ref passed in type accordingly
+        /// This guy checks the type of variable that _value contains and set the via ref passed in type accordingly
         /// </summary>
         /// <param name="_key">The key of the value to be retrieved</param>
         /// <param name="_value">The value to be checked for its variable type</param>
