@@ -35,6 +35,7 @@ namespace SBGCore
         /// <typeparam name="T"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
+        /// <see cref="Switch(Func{object, Action}[])"/>
         private Func<object, Action> Case<T>(Action<T> action)
         {
             return o => o is T ? (Action)(() => action((T)o)) : (Action)null;
